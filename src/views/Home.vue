@@ -1,18 +1,50 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <Header />
+    <Menu class="menu" @clicked="onChildClick" />
+    <div class='about' v-if="info=='about'">Professional, Creative Music Videos <br />Live and On Location</div>
+
+    <div class='contact has-text-left' v-if="info=='contact'">jeffrichie@gmail.com <br /> facebook.com/innerwolf <br /> 0403235544 </div>
+
+    <div class='facebook' v-if="info=='facebook'">My name is jeff</div>
+
+    <div class='work' v-if="info=='work'">Vimeo API</div>
+    
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import Component from 'vue-class-component';
+import Vue from 'vue';
+import Header from "@/components/Header.vue";
+import Menu from "@/components/Menu.vue";
 
-export default {
-  name: "home",
+@Component({
   components: {
-    HelloWorld
+    Header,
+    Menu,
   }
-};
+})
+export default class Home extends Vue {
+  info = 'about';
+
+  onChildClick(evt){
+    this.info = evt;
+  }
+}
+
 </script>
+<style scoped>
+.about{
+  margin: 50px;
+  transition-delay: 1000;
+  
+}
+
+.contact{
+  margin: 50px;
+  margin-left: 300px;
+}
+
+
+</style>
