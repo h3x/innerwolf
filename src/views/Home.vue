@@ -1,22 +1,21 @@
 <template>
   <div class="home">
     <Header />
+    
     <Menu class="menu" @clicked="onChildClick" />
     <div class='about' v-if="info=='about'">Professional, Creative Music Videos <br />Live and On Location</div>
-
     <div class='contact has-text-left' v-if="info=='contact'">jeffrichie@gmail.com <br /> facebook.com/innerwolf <br /> 0403235544 </div>
-
     <div class='facebook' v-if="info=='facebook'">My name is jeff</div>
 
     <div class='work' v-if="info=='work'">
       <div class="modal" v-bind:class="{'is-active' : modal}">
         <div class="modal-background"></div>
         <div class="modal-content">
-            <Vimeo />
+            <Vimeo  />
         </div>
         <button class="modal-close is-large" aria-label="close" @click='closeModal'></button>
       </div>
-          </div>
+    </div>
     
   </div>
 </template>
@@ -47,6 +46,8 @@ export default class Home extends Vue {
   closeModal(){
     this.modal = false;
   }
+
+
 }
 
 </script>
@@ -63,7 +64,7 @@ export default class Home extends Vue {
 }
 
 .modal-content {
-  width: 100%;
+  width: 90%;
 }
 
 </style>

@@ -1,25 +1,14 @@
 <template>
   <div class="vimeo">
-  
-  
     <div class="tile is-ancestor">
       <div class="tile is-vertical is-8">
         <div class="tile">
-          <div class="tile is-parent is-vertical" v-for="(video, index) in videos" v-bind:key="index">
-            <article class="tile is-child " >
-              <Video :vid="video"/>
-            </article>
-            
+          <div class="tile is-parent" v-for="(video, index) in videos" v-bind:key="index">
+              <Video class="tile video is-child" :vid="video"/>
           </div>
-
-          
         </div>
       </div>
     </div>
-    
-  
-  
-  
   </div>
 </template>
 
@@ -48,8 +37,8 @@ export default class Vimeo extends Vue {
 
 <style scoped>
 
-.tile {
-  
+.video {
+  margin: 50px;
 
 }
 </style>

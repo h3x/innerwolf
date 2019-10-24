@@ -1,12 +1,21 @@
 <template>
-  <div class="menu">
-    <ul>
+  <div class="menu" >
+    <nav  v-if="isMobile()" class="breadcrumb" aria-label="breadcrumbs">
+      <ul>
+        <li class="phone-menu"><a href="#">About</a></li>
+        <li class="phone-menu"><a href="#">Contact</a></li>
+        <li class="phone-menu"><a href="#">Facebook</a></li>
+        <li class="phone-menu"><a href="#">Work</a></li>
+      </ul>
+    </nav>
+    <ul v-else>
       <li class="nav item"><a @click="clk('about')">About</a></li>
       <li class="nav item"><a @click="clk('contact')">Contact</a></li>
       <li class="nav item"><a @click="clk('facebook')">Facebook</a></li>
       <li class="nav item"><a @click="clk('work')">Work</a></li>
     </ul>
   </div>
+
 </template>
 
 <script>
@@ -15,10 +24,17 @@ import Vue from 'vue';
 
 @Component
 export default class Menu extends Vue {
-
   clk(link){
     this.$emit('clicked', link);
   }
+
+  isMobile() {
+   if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+     return true
+   } else {
+     return false
+   }
+}
 }
 
 </script>
@@ -38,6 +54,15 @@ li{
   -webkit-transition: 0.5s; /* For Safari 3.1 to 6.0 */
   transition: 0.5s;
   
+}
+
+.breadcrumb {
+  margin: auto;
+}
+
+.phone-menu {
+  transform:  rotate(0);
+  margin-top: 0;
 }
 
 li:hover{
